@@ -1,13 +1,19 @@
 package web.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "cars")
 public class Car {
-
-
-
-
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "color")
     private String color;
+    @Column(name = "model")
     private String model;
+    @Column(name = "price")
     private int price;
 
     public Car(String color, String model, int price) {
@@ -17,7 +23,11 @@ public class Car {
         this.price = price;
     }
 
-   public String getColor() {
+    public Car() {
+
+    }
+
+    public String getColor() {
         return color;
     }
 

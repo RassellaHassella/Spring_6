@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Cars</title>
+    <h2>Cars</h2>
+    <br>
 </head>
 <div class="column">
 <table class="table datatable">
@@ -15,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="car : ${cars}">
+    <tr th:each="car : ${carsList}">
         <td th:text="${car.color}">Text ...</td>
         <td th:text="${car.model}">Text ...</td>
         <td th:text="${car.price}">Text ...</td>
