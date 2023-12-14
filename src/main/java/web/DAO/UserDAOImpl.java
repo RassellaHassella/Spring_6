@@ -12,13 +12,13 @@ import javax.persistence.PersistenceContext;
 @Repository
 
 public class UserDAOImpl implements UserDAO {
-    private static int PEOPLE_COUNT;
+
     @PersistenceContext
     private EntityManager entityManager;
 
 
     @Override
-//    @Transactional(readOnly = true)
+
     public List<User> getAll() {
         List<User> listUser = entityManager.createQuery("select u from User u", User.class).getResultList();
         return listUser;
@@ -38,9 +38,13 @@ public class UserDAOImpl implements UserDAO {
 //    }
 //    user.setId(++PEOPLE_COUNT);
     @Override
-    @Transactional
     public void saveUser(User user) {
-        entityManager.persist(user);
+        entityManager.merge(user);
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return entityManager.find(User.class, id);
     }
 
 }

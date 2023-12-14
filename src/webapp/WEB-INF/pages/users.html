@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,19 +11,25 @@
 <table class="table datatable">
     <thead>
     <tr>
-<!--        <th>Id</th>-->
         <th>FirstName</th>
         <th>LastName</th>
         <th>Email</th>
+        <th>Operations</th>
 
     </tr>
     </thead>
     <tbody>
     <tr th:each="user : ${usersList}">
-<!--        <td th:text="${user.id}">Text ...</td>-->
+        <a th:href="@{/update(id=${user.id})}" th:text="${'Update'}"></a>
+
+
         <td th:text="${user.firstName}">Text ...</td>
         <td th:text="${user.lastName}">Text ...</td>
         <td th:text="${user.email}">Text ...</td>
+        <td>
+            <input type="button" value="Update"
+                   onclick="window.location.href = `@{/update(id=${user.id})}`"/>
+        </td>
     </tr>
     </tbody>
 </table>
