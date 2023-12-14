@@ -18,16 +18,15 @@ public class User {
 
 
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private Car userCar;
+//    @OneToOne
+//    @JoinColumn(name = "id", referencedColumnName = "id")
+//    private Car userCar;
 
 
-    public User(String firstName, String lastName, String email, Car userCar) {
+    public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.userCar = userCar;
     }
 
     public User() {
@@ -64,13 +63,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    public Car getUserCar() {
-        return userCar;
-    }
-
-    public void setUserCar(Car userCar) {
-        this.userCar = userCar;
     }
 
     @Override

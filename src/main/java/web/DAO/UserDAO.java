@@ -1,21 +1,17 @@
 package web.DAO;
 
-import org.springframework.transaction.annotation.Transactional;
-import web.model.Car;
 import web.model.User;
 
 import java.util.List;
 
 public interface UserDAO {
-    @Transactional
-    List<Car> getAll();
 
-    @Transactional
-    void add ();
+    List<User> getAll();
 
-    @Transactional
-    void delete(User user);
+//    void delete(User user);
+//
+//
+//    void update(User user);
 
-    @Transactional
-    void update(User user);
+    void saveUser(User user);
 }

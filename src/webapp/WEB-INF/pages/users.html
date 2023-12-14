@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <h2>Users</h2>
+    <br>
+</head>
+<div class="column">
+<table class="table datatable">
+    <thead>
+    <tr>
+<!--        <th>Id</th>-->
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${usersList}">
+<!--        <td th:text="${user.id}">Text ...</td>-->
+        <td th:text="${user.firstName}">Text ...</td>
+        <td th:text="${user.lastName}">Text ...</td>
+        <td th:text="${user.email}">Text ...</td>
+    </tr>
+    </tbody>
+</table>
+    <br>
+    <input type="button" value="Add"
+    onclick="window.location.href = 'addNewUser'"/>
+</html>
