@@ -18,9 +18,6 @@ public class User {
 
 
 
-//    @OneToOne
-//    @JoinColumn(name = "id", referencedColumnName = "id")
-//    private Car userCar;
 
 
     public User(String firstName, String lastName, String email) {

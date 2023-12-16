@@ -1,5 +1,8 @@
 package web.controller;
 
+import org.apache.velocity.exception.ResourceNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -39,12 +44,18 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/{id}/update")
-    public String updateUser(Model model, @RequestParam("id") int id) {
+    @RequestMapping("/update")
+    public String updateUser(Model model, @RequestParam("id") long id) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
-
+        userService.saveUser(user);
         return "user-info";
     }
-
+    @RequestMapping("/delete")
+    public String deleteUser(Model model, @RequestParam("id") long id){
+        User user = userService.getUserById(id);
+        userService.deleteUser(id);
+        return "redirect:/";
+    }
 }
+

@@ -1,7 +1,9 @@
 package web.DAO;
 
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import web.model.User;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
 
 
+
     @Override
 
     public List<User> getAll() {
@@ -24,27 +27,22 @@ public class UserDAOImpl implements UserDAO {
         return listUser;
     }
 
-//    @Override
-//
-//    public void delete(User user){
-//
-////        entityManager.remove(user);
-//    }
-
-    //    @Override
-//    public void update(User user){
-//
-////        entityManager.merge(user);
-//    }
-//    user.setId(++PEOPLE_COUNT);
     @Override
     public void saveUser(User user) {
         entityManager.merge(user);
     }
 
+    //Получение данного пользователя по id
+
     @Override
-    public User getUserById(int id) {
+    public User getUserById(long id) {
         return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        User user = getUserById(id);
+        entityManager.remove(user);
     }
 
 }
