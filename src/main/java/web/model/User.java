@@ -2,6 +2,10 @@ package web.model;
 
 import javax.persistence.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -10,10 +14,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "email")
+    @NotBlank(message = "Email is required")
+    @Email
     private String email;
+
+    @NotBlank(message = "Name is required")
+
     @Column(name = "name")
     private String firstName;
     @Column(name = "last_name")
+    @NotBlank(message = "Lastname is required")
+
     private String lastName;
 
 
